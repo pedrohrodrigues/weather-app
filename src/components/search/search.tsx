@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { GEO_API_URL, geoApiOptions } from '../../api';
 
 interface onSearchChangeType {
-  onSearchChange: (searchData: string) => void;
+  onSearchChange: (searchData: searchDataItem) => void;
 }
 
 interface cityType {
@@ -13,9 +13,17 @@ interface cityType {
   countryCode: string;
 }
 
+export interface searchDataItem {
+  label: string;
+  value: string;
+}
+
+export type searchDataValues = searchDataItem[];
+
 const Search = ({ onSearchChange: onSearchChange }: onSearchChangeType) => {
-  const [search, setSearch] = useState('');
-  const handleOnChange = (searchData: string | null) => {
+  const [search, setSearch] = useState<searchDataItem>();
+  console.log({search});  
+  const handleOnChange = (searchData: searchDataItem | null) => {
     if (searchData === null) return;
     setSearch(searchData);
     onSearchChange(searchData);
