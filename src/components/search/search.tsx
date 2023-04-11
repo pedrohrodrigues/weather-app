@@ -22,7 +22,7 @@ export type searchDataValues = searchDataItem[];
 
 const Search = ({ onSearchChange: onSearchChange }: onSearchChangeType) => {
   const [search, setSearch] = useState<searchDataItem>();
-  console.log({search});  
+  console.log({ search });
   const handleOnChange = (searchData: searchDataItem | null) => {
     if (searchData === null) return;
     setSearch(searchData);
